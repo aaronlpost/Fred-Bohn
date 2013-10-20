@@ -1,0 +1,69 @@
+        <section class="clearfix">
+	        <h1 class="year">2013</h1>
+	        	<div class="row right"> 
+		        	{{ entries:listing folder="painting/2013" }}
+		        	{{ if count == "1" }}
+		        	<a href="{{ url }}">
+			        	<div class="focal left">
+				        	{{ image src="{ main_image }" dim="600x600" quality="72" }}
+				        	<img src="{{ image_url }}" alt="{{ title }}" class="resize" />
+				        	{{ /image }}
+				        </div>
+				    </a>                       
+                    {{ else }}
+                    <a href="{{ url }}">
+                    	<div class="thumb left">
+                        	{{ image src="{ main_image }" dim="300x300" quality="72" }}
+                            <img src="{{ image_url }}" alt="{{ title }}" class="resize" />
+                            {{ /image }}
+                        </div>
+                    </a>
+                    {{ endif }}
+                {{ if count == "5" || count == "9" || count == "13" }}
+                </div> 
+                
+                <div class="row right">
+	            {{ endif }}
+                	{{ /entries:listing }}
+                </div>
+        </section>
+
+        <section class="clearfix">
+	        <h1 class="year">2012</h1>
+            	<div class="row right"> 
+                	{{ entries:listing folder="painting/2012" }}
+                    <a href="{{ url }}">
+                    	<div class="thumb left">
+                        	{{ image src="{ main_image }" dim="300x300" quality="72" }}
+                            <img src="{{ image_url }}" alt="{{ title }}" class="resize" />
+                            {{ /image }}
+                        </div>
+                    </a>
+                {{ if count > "3" and count % "4" == "0" }}
+                </div>
+                
+                <div class="row right">
+	            {{ endif }}
+                	{{ /entries:listing }}
+                </div>
+        </section>
+        
+        <section class="clearfix">
+	        <h1 class="year">2011</h1>
+            	<div class="row right"> 
+                	{{ entries:listing folder="painting/2011" }}
+                    <a href="{{ url }}">
+                    	<div class="thumb left">
+                        	{{ image src="{ main_image }" dim="300x300" quality="72" }}
+                            <img src="{{ image_url }}" alt="{{ title }}" class="resize" />
+                            {{ /image }}
+                        </div> <!-- thumb -->
+                    </a>
+                {{ if count > "3" and count % "4" == "0" }}
+                </div>
+                
+                <div class="row right">
+	            {{ endif }}
+                	{{ /entries:listing }}
+                </div> <!-- row -->
+        </section>

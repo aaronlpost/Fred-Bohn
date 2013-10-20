@@ -1,0 +1,720 @@
+@import 'bourbon';
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+ 
+@mixin breakpoint($point) {
+  @if $point == small {
+    @media (max-width: 792px) { @content; }
+  }
+  @if $point == medium {
+    @media (min-width: 793px) and (max-width: 1040px) { @content; }
+  }
+  @else if $point == large {
+    @media (min-width: 1300px) { @content; }
+  }
+}
+
+/* 	==========================================================================
+   	Global
+   	==========================================================================  */
+
+	html, body, div, span, applet, object, iframe,
+	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+	a, abbr, acronym, address, big, cite, code,
+	del, dfn, em, ins, kbd, q, s, samp,
+	small, strike, strong, sub, sup, tt, var,
+	b, u, i, center,
+	dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td,
+	article, aside, canvas, details, embed, 
+	figure, figcaption, footer, hgroup, 
+	menu, nav, output, ruby, section, summary,
+	time, mark, audio, video {
+	  	margin: 0;
+	  	padding: 0;
+	  	border: 0;
+	  	font-size:100%;
+	  	font: inherit;
+	  	vertical-align: baseline;
+	}
+	
+	article, aside, details, figcaption, figure,
+	footer, header, hgroup, menu, nav, section {
+		display: block;
+	}
+	
+	strong, b {
+		font-weight: bold;
+	}
+	
+	i, em, blockquote {
+	  	font-style: italic;
+	}
+	
+	html, body {
+	  	min-height: 100%;
+	}
+	
+	html {
+	  	-webkit-text-size-adjust: 100%;
+	  	-ms-text-size-adjust: 100%;
+	  	overflow-y: scroll;
+	}
+	
+	img {
+	  	-ms-interpolation-mode: bicubic;
+	  	background: transparent;
+	  	border: 0;
+	}
+	
+	hr {
+		border: 0;
+		height: 1px;
+		background-color: #ddd;
+	}
+
+/* 	==========================================================================
+   	Text Selection
+   	==========================================================================  */
+   	
+	::-moz-selection {
+	  	background: rgb(100,100,100);
+	  	color: rgb(255,255,255);
+	  	text-shadow: none;
+	}
+	
+	::selection {
+	  	background: rgb(100,100,100);
+	  	color: rgb(255,255,255);
+	  	text-shadow: none;
+	}
+	
+	::selection:window-inactive {
+	  	background: rgb(220,220,220);
+	  	color: rgb(50,50,50);
+	}
+	
+	img::selection {
+	  	background: transparent;
+	}
+	
+	img::-moz-selection {
+	  	background: transparent;
+	}
+
+/* 	==========================================================================
+   	Typography
+   	==========================================================================  */
+   	
+	body {
+	    font: 1em/1.5 'Open Sans', Helvetica, Helvetica Neue, Arial;
+	    font-weight: 400;
+	    text-rendering: optimizeLegibility;
+	    margin: 0;
+	    width: 100%;
+	    color: #333;
+	    background-color: #383838;
+		background: url('../img/broken_noise.jpg');
+		@include breakpoint(small) {font-size: .85em;};
+		@include breakpoint(medium) {font-size: .85em;}	    	    
+		@include breakpoint(large) {font-size: 1em; margin: 0 auto; width: 1300px;}	    	    
+	}
+	
+	h1, h2, h3, h4, h5, h6 {
+	    font-family: 'Oswald', sans-serif;
+	    font-weight: 400;
+	    -moz-font-feature-settings: "liga=1, kern=1";
+	    -ms-font-feature-settings: "liga" 1, "kern" 1;
+	    text-rendering: optimizeLegibility;
+	    margin-bottom: 1.42382em;
+	    font-weight: normal;
+		text-shadow: 1px 1px #fff;
+	}
+	
+	p, ul, ol, dl, blockquote, .content img {
+	  	margin-bottom: 1.5em;
+	  	-webkit-hyphens: auto;
+	  	-moz-hyphens: auto;
+	  	hyphens: auto;
+	}
+	
+	h1 {
+	  	margin: .97em 0 .5em;
+	  	line-height: 1.125em;
+	  	font-size: 3em;
+	}
+	
+	h2 {
+	  	line-height: 1.77777em;
+	  	margin-bottom: 1em;
+	  	font-size: 1.2em;
+	}
+	
+	h3 {
+	  	margin: 1.7em 0 .85em;
+	  	line-height: 1.5em;
+	  	font-size: 1.3em;
+	}
+	
+	h4 {
+	  	line-height: 1.12382em;
+	  	margin: 0 0 1.3em;
+	  	font-size: 1.2em;
+	}
+	
+	h5 {
+	  	text-transform: uppercase;
+	  	letter-spacing: 2px;
+	  	line-height: 1.5em;
+	  	margin: 0 0 1.5em;
+	  	font-size: 1em;
+	}
+	
+	h6 {
+	  	font-weight: bold;
+	  	margin: 0 0 1.5em;
+	}
+	
+	input, textarea {
+		font: 1em/1.5 'Open Sans', Helvetica, Helvetica Neue, Arial;
+	    font-weight: 400;
+	    text-rendering: optimizeLegibility;
+	    background: #fcfcfc;
+	    color: #444;
+	}
+
+	.error {
+		color: #980000 !important;
+	}
+	
+	.success {
+		color: #3c9900 !important;
+	}
+
+/* 	==========================================================================
+	Links
+ 	==========================================================================  */
+
+	a {
+	  	border-bottom: 1px solid rgb(200,200,200);
+	  	text-decoration: none;
+	  	color: rgb(80,80,80);
+	    @include transition (all .2s ease-out);
+	}
+	
+	a:hover {
+	  	border-bottom: 1px solid rgb(0,0,0);
+	  	background: rgba(0,0,0,.05);
+	  	color: rgb(0,0,0);
+	}
+	
+	a:active {
+	 	outline: none;
+	}
+
+/* 	==========================================================================
+	Variables
+ 	==========================================================================  */
+ 	
+ 	$thumb: 200px;
+ 	$spacing: 40px;
+ 	$focal: ($thumb * 2) + $spacing;
+ 	$container: ($thumb * 4) + ($spacing * 4);
+ 	
+/* 	==========================================================================
+   	Layout
+   	==========================================================================  */
+ 	
+	section, header, footer {
+	    opacity: 0;
+	    width: $container - $spacing;
+	    margin-left: auto;
+	    margin-right: auto;
+	    padding-top: $spacing;
+	    @include breakpoint(small) {width: ($container - $spacing)*.7;};
+	    @include breakpoint(medium) {width: ($container - $spacing)*.8;};
+	    @include breakpoint(large) {width: ($container - $spacing)*1.2;};	
+	    background-color: #f5f6f8;    
+	}
+	
+	footer {
+	    border-top: 1px solid #ddd;
+	    clear: both;
+	    padding-bottom: $spacing;
+	    margin-top: $spacing;
+	}
+	 	
+	.wrapper {
+		background-color: #f5f6f8;
+	    padding: 0;
+	}	
+	 	
+/* 	==========================================================================
+	Header
+ 	==========================================================================  */
+
+	.logo {
+	    background: url('../img/logo-med.png') no-repeat 0 -2px;
+	    width: 150px;
+	    height: 86px;
+	    margin: 0 auto $spacing/2 auto;
+	    text-indent: -9999px;
+	}
+	
+	.logo:hover {
+	    background: url('../img/logo-med.png') no-repeat 0 -114px;
+	}
+
+	nav ul {
+		border-bottom: 1px solid #ccc;
+		padding: 1em 0;
+		margin-bottom: 0;
+	}
+
+ 	header ul li {
+	 	display: inline-block;
+	 	width: $thumb;
+	 	margin-right: $spacing;
+	 	text-align: center;
+	    @include breakpoint(small) {width: $thumb*.7; margin-right: $spacing*.7;}
+	    @include breakpoint(medium) {width: $thumb*.8; margin-right: $spacing*.8;}
+	    @include breakpoint(large) {width: $thumb*1.2; margin-right: $spacing*1.2;}	    
+ 	}
+ 	
+  	header ul li:last-child {
+	 	margin-right: 0;
+ 	}
+ 
+ 	header ul li a {
+	 	font-size: 1.25em;
+	    font-family: 'Oswald', sans-serif;
+	    font-weight: 300;
+	    text-decoration: none;
+	    color: rgb(117,117,132);
+	    @include transition (all .2s ease-out);
+	    border-radius: 2px;
+	    text-shadow: 1px 1px #fff;
+	 	padding: .25em 1em;
+	 	border-bottom: 0;
+ 	}
+ 	
+ 	header ul li a:hover {
+	 	background: rgb(117,117,132);
+	 	color: #fff;
+	    text-shadow: 1px 1px #000;
+	    border-bottom: 0;
+ 	}
+ 	
+/* 	==========================================================================
+	Home/Blog
+ 	==========================================================================  */
+ 	
+ 	article {
+	 	width: ($thumb*2)+($spacing*3);
+	 	margin-left: $thumb;
+	 	margin-top: $spacing*1.5;
+	    @include breakpoint(small) {width: (($thumb*2)+($spacing*3))*.7; margin-top: $spacing*.7*1.5; margin-left: $thumb*.7;}
+	    @include breakpoint(medium) {width: (($thumb*2)+($spacing*3))*.8; margin-top: $spacing*.8*1.5; margin-left: $thumb*.8;}
+	    @include breakpoint(large) {width: (($thumb*2)+($spacing*3))*1.2; margin-top: $spacing*1.2*1.5; margin-left: $thumb*1.2;}
+ 	}
+ 	
+ 	article h1 {
+	 	line-height: 1.25;
+	 	margin-bottom: 0;
+ 	}
+ 
+ 	article img {
+	 	max-width: 100%;
+ 	}
+ 	
+ 	.large {
+	 	width: ($thumb*3)+($spacing*3);
+	 	margin-left: auto;
+	 	margin-right: auto;
+	 	font-size: 125%;
+	    margin-top: 0;
+	    @include breakpoint(small) {width: (($thumb*3)+($spacing*3))*.7; }
+	    @include breakpoint(medium) {width: (($thumb*3)+($spacing*3))*.8; }
+	    @include breakpoint(large) {width: (($thumb*3)+($spacing*3))*1.2; }
+ 	}
+ 	
+ 	.large h1 {
+		margin-top: 0; 	
+	 	text-align: center;
+ 	}
+ 	
+ 	.large h3 {
+	 	text-align: center;
+ 	}
+ 	
+ 	.largest {
+	 	margin-left: auto;
+	 	margin-right: auto;
+	 	font-size: 125%;
+	    margin-top: 0;
+	    text-align: center;
+ 	}
+ 	
+ 	.largest h1 {
+		margin-top: 0; 	
+ 	}
+ 	
+ 	.meta {
+	 	color: rgb(151,151,151);
+	 	margin-bottom: 1.5em;
+ 	}
+ 	
+/* 	==========================================================================
+	Gallery
+ 	==========================================================================  */
+ 	
+ 	.year {
+	 	margin-top: 0;
+	 	text-align: center;
+ 	}
+ 
+  	.row {
+	 	width: $container;
+	 	margin-right: -$spacing;
+	 	float: left;
+	    @include breakpoint(small) {width: $container*.7; margin-right: -$spacing*.7;}
+	    @include breakpoint(medium) {width: $container*.8; margin-right: -$spacing*.8;}
+	    @include breakpoint(large) {width: $container*1.2; margin-right: -$spacing*1.2;}
+ 	}
+ 	
+ 	.focal {
+	 	width: $focal;
+	 	height: $focal;
+	 	margin-right: $spacing;
+	 	margin-bottom: $spacing;
+	 	overflow: hidden;
+	 	outline: 1px solid #888;
+	 	@include transition (all 0.1s ease-out);
+	    @include breakpoint(small) {width: $focal*.7; height: $focal*.7; margin-right: $spacing*.7; margin-bottom: $spacing*.7;}
+	    @include breakpoint(medium) {width: $focal*.8; height: $focal*.8; margin-right: $spacing*.8; margin-bottom: $spacing*.8;}
+	    @include breakpoint(large) {width: $focal*1.2; height: $focal*1.2; margin-right: $spacing*1.2; margin-bottom: $spacing*1.2;}	    
+ 	}
+ 	
+ 	.thumb {
+	 	width: $thumb;
+	 	height: $thumb;
+	 	margin-right: $spacing;
+	 	margin-bottom: $spacing;
+	 	overflow: hidden;
+	 	outline: 1px solid #888;
+ 	    @include transition (all 0.1s ease-out);
+	    @include breakpoint(small) {width: $thumb*.7; height: $thumb*.7; margin-right: $spacing*.7; margin-bottom: $spacing*.7;}
+	    @include breakpoint(medium) {width: $thumb*.8; height: $thumb*.8; margin-right: $spacing*.8; margin-bottom: $spacing*.8;}
+	    @include breakpoint(large) {width: $thumb*1.2; height: $thumb*1.2; margin-right: $spacing*1.2; margin-bottom: $spacing*1.2;}	    
+ 	}
+ 	
+ 	.focal:hover, .thumb:hover, .mainimage:hover {
+	 	outline: 4px solid #333;
+ 	}
+ 	
+ 	.left {
+	    float: left;
+	}
+	
+	.right {
+	    float: right;
+	}
+	
+	.center {
+	    text-align: center;
+	}
+	
+	.resize {
+	    position: relative;
+	}
+
+/* 	==========================================================================
+	Artwork Page
+ 	==========================================================================  */
+	
+	.mainimage {
+	    max-width: 100%;
+	    outline: 1px solid #fff;
+	    @include transition (outline 0.2s ease-out);
+	}
+	
+	.fresco {
+		border: 0;
+	}
+
+	.fresco:hover {
+		border: 0;
+	}
+
+/* 	==========================================================================
+	Artwork Page Nav
+ 	==========================================================================  */
+ 	
+ 	@font-face {
+		font-family: 'icomoon';
+		src:url('../fonts/icomoon.eot');
+		src:url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+			url('../fonts/icomoon.svg#icomoon') format('svg'),
+			url('../fonts/icomoon.woff') format('woff'),
+			url('../fonts/icomoon.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+	}
+	
+	[data-icon]:before {
+		font-family: 'icomoon';
+		content: attr(data-icon);
+		speak: none;
+		font-weight: normal;
+		line-height: 1;
+		-webkit-font-smoothing: antialiased;
+	}
+	
+	[data-icon="previous"]:before {
+		content: "\2190";
+	    @include breakpoint(small) {display: none; }
+	    @include breakpoint(medium) {display: none; }
+	}
+	[data-icon="next"]:before {
+		content: "\2192";
+	    @include breakpoint(small) {display: none; }
+	    @include breakpoint(medium) {display: none; }
+	}
+
+	.pagination {
+	    @include breakpoint(small) {margin-top: 2*$spacing; padding-top: .5*$spacing; margin-bottom: -.5*$spacing; border-top: 1px solid #ddd; }
+	    @include breakpoint(medium) {margin-top: 2*$spacing; padding-top: .5*$spacing; margin-bottom: -.5*$spacing; border-top: 1px solid #ddd; }
+	}
+
+	#next, #prev {
+		position: fixed;
+		top: 40%;
+		width: 80px;
+	    height: 2em;
+	    padding: 12px;
+	    font-size: 2em; 
+	 	background: rgba(0,0,0,.07);
+	    @include breakpoint(large) {background: rgba(0,0,0,.9); color: rgba(255,255,255,0.9);}
+	}
+
+ 	#next-inner, #prev-inner {
+	 	position: fixed;
+		top: 40%;	
+		padding: 12px;
+		font-size: .5em;
+		width: 174px;
+		border: 0;
+ 	}
+
+ 	#next-inner img, #prev-inner img {
+	 	padding-bottom: 8px;
+ 	}
+
+ 	#next:hover a, #prev:hover a {
+	 	color: rgba(255,255,255,0.9);
+	 	text-decoration: none;
+	 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+	 	border: 0;
+ 	}
+
+ 	#next {
+	    right: 0; 
+	    text-align: left;
+	    border-radius: 6px 0 0 6px;
+ 	    @include transition (all 0.2s ease-out);
+	    @include breakpoint(small) {position: relative; padding: 0; background: rgba(0,0,0,0); float: right; width: 160px; height:auto}
+	    @include breakpoint(medium) {position: relative; padding: 0; background: rgba(0,0,0,0); float: right; width: 160px; height:auto}
+ 	}
+ 	
+ 	#next-inner {
+		right: -174px;
+		text-align: right;
+	 	color: rgba(0,0,0,0.9);
+	 	text-decoration: none;
+	 	text-shadow: 1px 1px 1px rgba(255, 255, 255, 1);
+	    border-radius: 0 0 0 6px;
+ 	    @include transition (all 0.2s ease-out);
+	    @include breakpoint(small) {position: relative; right: 0; top: 0; border-radius: 0; display: block;};
+	    @include breakpoint(medium) {position: relative; right: 0; top: 0; border-radius: 0; display: block;}
+ 	}
+
+ 	#next:hover {
+	 	right: 174px;
+	 	color: rgba(255,255,255,0.9);
+	 	text-decoration: none;
+	 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+	 	background: rgba(0,0,0,.9);
+	 	@include breakpoint(small) {right: 0; background: rgba(0,0,0,0); }
+	    @include breakpoint(medium) {right: 0; background: rgba(0,0,0,0); }
+ 	}
+ 	
+ 	#next:hover #next-inner {
+	 	right: 0;
+	 	background: rgba(0,0,0,.9);
+ 	}
+ 	 	
+ 	#prev {
+	    left: 0;
+	    text-align: right;
+	    border-radius: 0 6px 6px 0;
+ 	    @include transition (all 0.2s ease-out);
+	    @include breakpoint(small) {position: relative; padding: 0; background: rgba(0,0,0,0); float: left; width: 160px; height: auto;}
+	    @include breakpoint(medium) {position: relative; padding: 0; background: rgba(0,0,0,0); float: left; width: 160px; height: auto;}
+ 	}
+ 	
+ 	#prev-inner {
+		left: -174px;
+		text-align: left;
+	 	color: rgba(0,0,0,0.9);
+	 	text-decoration: none;
+	 	text-shadow: 1px 1px 1px rgba(255, 255, 255, 1);
+	    border-radius: 0 0 6px 0;
+ 	    @include transition (all 0.2s ease-out);
+	    @include breakpoint(small) {position: relative; left: 0; top: 0; border-radius: 0; display: block;}
+	    @include breakpoint(medium) {position: relative; left: 0; top: 0; border-radius: 0; display: block;}
+ 	}
+ 	
+ 	#prev:hover {
+	 	left: 174px;
+	 	color: rgba(255,255,255,0.9);
+	 	text-decoration: none;
+	 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+	 	background: rgba(0,0,0,.9);
+	    @include breakpoint(small) {left: 0; background: rgba(0,0,0,0); }
+	    @include breakpoint(medium) {left: 0; background: rgba(0,0,0,0); }
+ 	}
+ 	
+ 	#prev:hover #prev-inner {
+	 	left: 0;
+	 	background: rgba(0,0,0,.9);
+ 	}
+ 	
+/* 	==========================================================================
+	Contact Page
+ 	==========================================================================  */
+ 	
+ 	form {
+	 	width: (2*$thumb);
+	 	margin-right:($thumb+$spacing)*.5;
+	 	float: right;
+	 	text-align: left;
+	 	padding: 0;
+	    @include breakpoint(small) {width: ((2*$thumb))*.7; margin-right:($thumb+$spacing)*.7*.5; }
+	    @include breakpoint(medium) {width: ((2*$thumb))*.8; margin-right:($thumb+$spacing)*.8*.5; }
+	    @include breakpoint(large) {width: ((2*$thumb))*1.2; margin-right:($thumb+$spacing)*1.2*.5; }
+ 	}
+ 	
+ 	input, textarea {
+	 	width: (2*$thumb);
+	 	float: right;
+	 	text-align: left;
+	 	border: 1px solid #ccc;
+	 	padding: 6px;
+	 	margin-bottom: 1.5em;
+	    @include transition (all .1s ease-out);
+	    @include breakpoint(small) {width: ((2*$thumb))*.7; }
+	    @include breakpoint(medium) {width: ((2*$thumb))*.8; }
+	    @include breakpoint(large) {width: ((2*$thumb))*1.2; }
+ 	}
+ 	
+ 	textarea {
+		height: 200px;
+	}
+
+	textarea:focus, input:focus {
+		border: 1px solid #333;
+		background: #fff;
+		color: #000;
+	}
+	
+	input.submit-button {
+		width: 100px;
+		float: left;
+		text-align: center;
+		border: 2px solid #333;
+		color: #000;
+	}
+	
+	input.submit-button:hover {
+		background: #999;
+		color: #fff;
+	    text-shadow: 1px 1px #000;
+	}
+	
+	.hardcontact {
+	 	width: $thumb*1.5;
+	 	margin-left: $spacing*1.5;
+	 	float: left;
+	 	text-align: right;
+	 	padding: 0;
+	    @include breakpoint(small) {width: ($thumb*1.5)*.7; margin-left:($spacing*1.5)*.7; }
+	    @include breakpoint(medium) {width: ($thumb*1.5)*.8; margin-left:($spacing*1.5)*.8; }
+	    @include breakpoint(large) {width: ($thumb*1.5)*1.2; margin-left:($spacing*1.5)*1.2; }	
+	}
+	
+	.hardcontact p, .hardcontact a {
+	 	display: block;
+		font-weight: 700;
+		padding: 6px;
+		color: #000;
+		border: 1px solid #f5f6f8;
+		margin-bottom: 1.5em;
+	    @include transition (all .1s ease-out);
+	}
+	
+	.hardcontact p:hover, .hardcontact a:hover {
+		border: 1px solid #333;
+	}
+	
+/* 	==========================================================================
+	CV Page
+ 	==========================================================================  */
+ 	
+ 	.cv > h2 {
+	 	width: $thumb*1.5;
+	 	margin-left: $spacing*1.5;
+	 	float: left;
+	 	text-align: right;
+	 	padding: 0;
+	 	clear: both;
+	 	margin-bottom: 0;
+	 	line-height: 1.5;
+	    @include breakpoint(small) {width: ($thumb*1.5)*.7; margin-left:($spacing*1.5)*.7; }
+	    @include breakpoint(medium) {width: ($thumb*1.5)*.8; margin-left:($spacing*1.5)*.8; }
+	    @include breakpoint(large) {width: ($thumb*1.5)*1.2; margin-left:($spacing*1.5)*1.2; }	
+ 	}
+ 	
+ 	.cv > ul {
+	 	width: (2*$thumb);
+	 	margin-right:($thumb+$spacing)*.5;
+	 	float: right;
+	 	text-align: left;
+	 	padding: 0;
+	    @include breakpoint(small) {width: ((2*$thumb))*.7; margin-right:($thumb+$spacing)*.7*.5; }
+	    @include breakpoint(medium) {width: ((2*$thumb))*.8; margin-right:($thumb+$spacing)*.8*.5; }
+	    @include breakpoint(large) {width: ((2*$thumb))*1.2; margin-right:($thumb+$spacing)*1.2*.5; }
+ 	} 	
+ 	
+ 	.cv ul {
+	 	list-style: none;
+ 	}
+ 	
+ 	.cv ul h3 {
+	 	margin-top: 0;
+	 	line-height: 1.5;
+ 	}
+ 	
+ 	.cv p:first-child, .cv h1 + p {
+	 	margin-bottom: 0
+ 	}
+ 	
+ 	.cv li p + p {
+	 	color: rgb(151,151,151);
+ 	}
+ 	
+@import 'anythingslider';

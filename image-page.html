@@ -1,0 +1,46 @@
+        <section>
+        	<figure class="center">
+            	{{ image src="{ main_image }" dim="920x2000" quality="72" }}
+            	<a href="{{ image_url }}" class="fresco" >
+            	<img src="{{ image_url }}" class="mainimage" />
+            	</a>
+                {{ /image }}
+                <figcaption>
+                	<h1>{{ title }}</h1>
+                    {{ medium }}
+                    <br>
+                    {{ dimensions }}
+                    <br>
+                    {{ year }}
+                </figcaption>
+            </figure>
+            <nav class="pagination clearfix">
+	        {{ if prev }}
+            	<div id="next">
+	            <span data-icon="next" aria-hidden="true"></span>            	
+	        	{{ entries:listing folder="painting/2013|painting/2012|painting/2011|drawing/2013|drawing/2012|drawing/2011" conditions="url:{prev}" }}
+            	<a href="{{ prev }}" id="next-inner" rel="next">
+	        	{{ image src="{ main_image }" dim="150x150#" quality="72" }}
+            	<img src="{{ image_url }}" />
+                {{ /image }}
+                {{ title }}
+                </a>
+	        	{{ /entries:listing }}
+            	</div>
+	        {{ endif }} 
+
+	        {{ if next }}
+            	<div id="prev">
+	        	{{ entries:listing folder="painting/2013|painting/2012|painting/2011|drawing/2013|drawing/2012|drawing/2011" conditions="url:{next}" }}
+            	<a href="{{ next }}" id="prev-inner" rel="prev">
+	        	{{ image src="{ main_image }" dim="150x150#" quality="72" }}
+            	<img src="{{ image_url }}" />
+                {{ /image }}
+                {{ title }}
+                </a>
+	        	{{ /entries:listing }}
+	            <span data-icon="previous" aria-hidden="true"></span>            	
+            	</span>
+	        {{ endif }} 
+            </nav>
+        </section>
